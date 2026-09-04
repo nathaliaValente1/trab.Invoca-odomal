@@ -1,14 +1,19 @@
-/* Configurações Globais e Variáveis de Cores */
+/* =========================================================
+   INVOCAÇÃO DO MAL - ESTILO TERROR (VERMELHO E PRETO)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Special+Elite&display=swap');
+
 :root {
-    --bg-principal: #0a0a0a;
-    --bg-secundario: #121212;
-    --bg-card: #1a0808;
-    --vermelho-sangue: #8b0000;
-    --vermelho-vivo: #d60000;
-    --vermelho-escuro: #4a0000;
-    --texto-claro: #e0e0e0;
-    --texto-mutado: #a0a0a0;
-    --borda-escura: #2a0a0a;
+    --bg-dark: #050202;
+    --bg-card: #0d0404;
+    --bg-input: #170707;
+    --blood-red: #8b0000;
+    --bright-red: #e60000;
+    --crimson-glow: rgba(230, 0, 0, 0.5);
+    --text-main: #d1c7c7;
+    --text-muted: #8c8282;
+    --border-red: #4a0000;
 }
 
 * {
@@ -18,39 +23,68 @@
 }
 
 body {
-    background-color: var(--bg-principal);
-    color: var(--texto-claro);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    padding: 20px;
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 50% 15%, rgba(139, 0, 0, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.95) 0%, transparent 100%);
+    color: var(--text-main);
+    font-family: 'Special Elite', 'Courier New', monospace;
+    line-height: 1.7;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
 }
 
-/* Cabeçalho */
+/* Overlay de vinheta assustadora (sombra escura ao redor da tela) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: inset 0 0 120px #000000, inset 0 0 200px rgba(45, 0, 0, 0.85);
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Cabeçalho com Animação de Piscada Sobrenatural (Flicker) */
 header {
-    background-color: var(--bg-secundario);
-    border-bottom: 2px solid var(--vermelho-sangue);
-    padding: 30px 20px;
     text-align: center;
-    margin-bottom: 40px;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, rgba(20, 0, 0, 0.9) 0%, rgba(5, 2, 2, 0) 100%);
+    border-bottom: 2px solid var(--border-red);
+    position: relative;
 }
 
 header h1 {
-    color: var(--vermelho-vivo);
-    font-size: 2.8rem;
-    letter-spacing: 2px;
+    font-family: 'Cinzel', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #f0e6e6;
+    letter-spacing: 6px;
     text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(214, 0, 0, 0.5);
-    margin-bottom: 8px;
+    text-shadow: 
+        0 0 10px var(--crimson-glow),
+        0 0 25px rgba(139, 0, 0, 0.9),
+        3px 3px 6px #000;
+    animation: flicker 5s infinite alternate;
 }
 
 header p {
-    color: var(--texto-mutado);
     font-style: italic;
+    color: var(--bright-red);
     font-size: 1.1rem;
-    margin-bottom: 20px;
+    margin-top: 12px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 8px rgba(139, 0, 0, 0.8);
 }
 
-/* Navegação */
+/* Menu de Navegação Sinistro */
+nav {
+    margin-top: 35px;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -60,97 +94,149 @@ nav ul {
 }
 
 nav a {
-    color: var(--texto-claro);
+    color: var(--text-main);
     text-decoration: none;
-    font-weight: bold;
-    padding: 8px 16px;
-    border: 1px solid var(--vermelho-escuro);
-    border-radius: 4px;
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border: 1px solid var(--border-red);
+    background-color: rgba(10, 2, 2, 0.8);
     transition: all 0.3s ease;
 }
 
 nav a:hover {
-    background-color: var(--vermelho-sangue);
     color: #ffffff;
-    box-shadow: 0 0 8px var(--vermelho-vivo);
+    border-color: var(--bright-red);
+    background-color: var(--blood-red);
+    text-shadow: 0 0 10px var(--bright-red);
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.6);
 }
 
-/* Conteúdo Principal */
+/* Container Principal */
 main {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
+/* Blocos de Conteúdo Estilo "Arquivo de Investigação" */
 section {
-    background-color: var(--bg-card);
-    border: 1px solid var(--borda-escura);
-    border-left: 4px solid var(--vermelho-sangue);
-    padding: 30px;
-    margin-bottom: 35px;
-    border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    background: var(--bg-card);
+    border: 1px solid var(--border-red);
+    border-left: 5px solid var(--blood-red);
+    padding: 35px;
+    margin-bottom: 45px;
+    border-radius: 2px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.95),
+        0 0 20px rgba(139, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, transparent 50%, rgba(139, 0, 0, 0.3) 50%);
 }
 
 h2 {
-    color: var(--vermelho-vivo);
+    font-family: 'Cinzel', serif;
+    color: var(--bright-red);
     font-size: 1.8rem;
-    margin-bottom: 15px;
-    border-bottom: 1px solid var(--vermelho-escuro);
-    padding-bottom: 8px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 1px dashed var(--border-red);
+    padding-bottom: 10px;
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
 }
 
 p {
     margin-bottom: 15px;
-    color: var(--texto-claro);
+    font-size: 1rem;
+    color: var(--text-main);
+    text-align: justify;
 }
 
-/* Tabela de Elenco */
+p strong {
+    color: #ffffff;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+em {
+    color: #ff9999;
+}
+
+/* Tabela Obscura do Elenco */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
-    background-color: var(--bg-principal);
+    margin-top: 20px;
+    background-color: #080202;
+    border: 1px solid var(--border-red);
 }
 
 th, td {
-    padding: 12px 15px;
+    padding: 12px 18px;
     text-align: left;
-    border: 1px solid var(--borda-escura);
+    border: 1px solid var(--border-red);
 }
 
 th {
-    background-color: var(--vermelho-escuro);
-    color: #ffffff;
+    background-color: #1c0303;
+    color: var(--bright-red);
+    font-family: 'Cinzel', serif;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    font-size: 0.95rem;
+    text-shadow: 0 0 5px rgba(139, 0, 0, 0.5);
 }
 
 tr:nth-child(even) {
-    background-color: rgba(139, 0, 0, 0.1);
+    background-color: #0f0404;
 }
 
 tr:hover {
-    background-color: rgba(214, 0, 0, 0.2);
+    background-color: #240505;
+    transition: background-color 0.2s ease;
 }
 
-/* Formulário */
+td {
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+/* Formulário com Estilo de Relato Paranormal */
 fieldset {
-    border: 1px solid var(--vermelho-escuro);
-    padding: 20px;
-    border-radius: 4px;
-    background-color: var(--bg-secundario);
+    border: 1px solid var(--border-red);
+    padding: 30px;
+    background: #080202;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
 legend {
-    color: var(--vermelho-vivo);
-    font-weight: bold;
-    padding: 0 10px;
+    font-family: 'Cinzel', serif;
+    color: var(--bright-red);
+    padding: 0 15px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(139, 0, 0, 0.6);
 }
 
 label {
-    color: var(--texto-claro);
-    font-weight: 500;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    display: inline-block;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
 input[type="text"],
@@ -158,45 +244,89 @@ input[type="email"],
 input[type="time"],
 textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    background-color: var(--bg-principal);
-    border: 1px solid var(--vermelho-escuro);
-    color: var(--texto-claro);
-    border-radius: 4px;
-    font-family: inherit;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-red);
+    color: #ffffff;
+    padding: 12px 15px;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    outline: none;
 }
 
-input:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="time"]:focus,
 textarea:focus {
-    outline: none;
-    border-color: var(--vermelho-vivo);
-    box-shadow: 0 0 5px var(--vermelho-vivo);
+    border-color: var(--bright-red);
+    box-shadow: 0 0 12px var(--crimson-glow);
+    background-color: #240808;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #664d4d;
 }
 
 button[type="submit"] {
-    background-color: var(--vermelho-sangue);
+    background: linear-gradient(180deg, #8b0000 0%, #4a0000 100%);
     color: #ffffff;
-    border: none;
-    padding: 12px 24px;
+    border: 1px solid var(--bright-red);
+    padding: 15px 30px;
+    font-family: 'Cinzel', serif;
     font-size: 1rem;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    text-shadow: 0 2px 4px #000;
 }
 
 button[type="submit"]:hover {
-    background-color: var(--vermelho-vivo);
-    box-shadow: 0 0 12px var(--vermelho-vivo);
+    background: linear-gradient(180deg, #cc0000 0%, #770000 100%);
+    box-shadow: 0 0 25px var(--crimson-glow);
+    color: #ffffff;
+    letter-spacing: 3px;
 }
 
 /* Rodapé */
 footer {
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    border-top: 1px solid var(--vermelho-escuro);
-    color: var(--texto-mutado);
-    font-size: 0.9rem;
+    padding: 35px 20px;
+    border-top: 2px solid var(--border-red);
+    background-color: #030101;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+/* Animação do Título (Piscada de Luz Ruim) */
+@keyframes flicker {
+    0%, 100% { opacity: 1; text-shadow: 0 0 10px var(--crimson-glow), 0 0 25px rgba(139, 0, 0, 0.9); }
+    48% { opacity: 1; }
+    50% { opacity: 0.3; text-shadow: none; }
+    52% { opacity: 0.95; }
+    74% { opacity: 0.9; }
+    75% { opacity: 0.2; }
+    76% { opacity: 1; }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2.2rem;
+        letter-spacing: 3px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    section {
+        padding: 20px 15px;
+    }
 }
