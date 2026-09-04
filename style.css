@@ -35,7 +35,7 @@ body {
     position: relative;
 }
 
-/* Overlay de vinheta assustadora (sombra escura ao redor da tela) */
+/* Overlay de vinheta escura ao redor da tela */
 body::before {
     content: "";
     position: fixed;
@@ -48,7 +48,7 @@ body::before {
     z-index: 999;
 }
 
-/* Cabeçalho com Animação de Piscada Sobrenatural (Flicker) */
+/* Cabeçalho */
 header {
     text-align: center;
     padding: 60px 20px 40px;
@@ -80,14 +80,7 @@ header p {
     text-shadow: 0 0 8px rgba(139, 0, 0, 0.8);
 }
 
-
-.filmes{
-
-    width: 80px; 
-    height: 60px;
-
-}
-/* Menu de Navegação Sinistro */
+/* Menu de Navegação */
 nav {
     margin-top: 35px;
 }
@@ -121,6 +114,40 @@ nav a:hover {
     box-shadow: 0 0 15px rgba(230, 0, 0, 0.6);
 }
 
+/* Galeria de Imagens Lado a Lado */
+.filmes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 30px auto 10px;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.img-destaque {
+    flex: 1;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border: 2px solid var(--border-red);
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(139, 0, 0, 0.4);
+    filter: grayscale(40%) contrast(110%);
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-destaque:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%) contrast(120%);
+    border-color: var(--bright-red);
+    box-shadow: 0 0 20px var(--crimson-glow);
+    cursor: pointer;
+    z-index: 2;
+}
+
 /* Container Principal */
 main {
     max-width: 900px;
@@ -128,7 +155,7 @@ main {
     padding: 0 20px;
 }
 
-/* Blocos de Conteúdo Estilo "Arquivo de Investigação" */
+/* Blocos de Conteúdo */
 section {
     background: var(--bg-card);
     border: 1px solid var(--border-red);
@@ -181,7 +208,7 @@ em {
     color: #ff9999;
 }
 
-/* Tabela Obscura do Elenco */
+/* Tabela do Elenco */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -220,7 +247,7 @@ td {
     font-size: 0.95rem;
 }
 
-/* Formulário com Estilo de Relato Paranormal */
+/* Formulário */
 fieldset {
     border: 1px solid var(--border-red);
     padding: 30px;
@@ -311,7 +338,7 @@ footer {
     letter-spacing: 1px;
 }
 
-/* Animação do Título (Piscada de Luz Ruim) */
+/* Animações e Responsividade */
 @keyframes flicker {
     0%, 100% { opacity: 1; text-shadow: 0 0 10px var(--crimson-glow), 0 0 25px rgba(139, 0, 0, 0.9); }
     48% { opacity: 1; }
@@ -322,7 +349,6 @@ footer {
     76% { opacity: 1; }
 }
 
-/* Responsividade */
 @media (max-width: 600px) {
     header h1 {
         font-size: 2.2rem;
@@ -332,6 +358,9 @@ footer {
         flex-direction: column;
         align-items: center;
         gap: 12px;
+    }
+    .filmes {
+        flex-direction: column;
     }
     section {
         padding: 20px 15px;
