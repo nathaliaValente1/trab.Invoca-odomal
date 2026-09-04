@@ -57,6 +57,14 @@ header {
     position: relative;
 }
 
+/* Estilo sombrio para imagens do tema */
+.img-destaque { 
+    border: 2px solid #8b0000; /* Borda vermelha escura */
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); /* Aura vermelha sutil */
+    filter: grayscale(50%) contrast(110%); /* Efeito levemente desbotado/antigo */
+    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+    margin: 20px auto;
+}
 header h1 {
     font-family: 'Cinzel', serif;
     font-size: 3.2rem;
